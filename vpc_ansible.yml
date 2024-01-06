@@ -21,7 +21,7 @@
       ec2_vpc_subnet:
         vpc_id: "{{vpcout.vpc.id}}"
         region: "{{Region}}"
-        Az: "{{Zone1}}"
+        az: "{{Zone1}}"
         state: present
         cidr: "{{public_subnet_cidr_block1}}"
         map_public: true
