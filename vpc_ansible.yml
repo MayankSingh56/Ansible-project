@@ -95,6 +95,20 @@
           Name: ansible internet gateway
       register: igwout
 
-
+    - name: creating the routetable for public subnet
+      ec2_vpc_route_table:
+        vpc_id: "{{vpcout.vpc.id}}"
+        region: "{{Region}}"
+        state: present
+        tags:
+          Name: Pub routetable
+        subnets:
+          - "{{pubsub1out.subnet.id}}"
+          - "{{pubsub2out.subnet.id}}"
+          - "{{pubsub3out.subnet.id}}"
+        routes:
+          - dest: 0.0.0.0/0
+            gateway_id: "{{igwout.gateway_id}}"
+        register: pubrtout
     
   
