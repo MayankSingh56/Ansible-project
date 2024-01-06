@@ -109,6 +109,6 @@
         routes:
           - dest: 0.0.0.0/0
             gateway_id: "{{igwout.gateway_id}}"
-        register: pubrtout
+      register: pubrtout
     
   
