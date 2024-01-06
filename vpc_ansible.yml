@@ -86,5 +86,15 @@
           Name: private-subnet3
       register: privsub3out
 
+    - name: creating internet gateway
+      ec2_vpc_igw:
+        vpc_id: "{{vpcout.vpc.id}}"
+        state: present
+        region: "{{Region}}"
+        tags:
+          Name: ansible internet gateway
+      register: igwout
+
+
     
   
