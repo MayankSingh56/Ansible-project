@@ -112,7 +112,7 @@
       register: pubrtout
     
     - debug:
-        var: {{item}}
+        var: "{{item}}"
       loop:
         - vpcout.vpc.id
         - pubsub1out.subnet.id
