@@ -111,4 +111,27 @@
             gateway_id: "{{igwout.gateway_id}}"
       register: pubrtout
     
+    - debug:
+        var: {{item}}
+      loop:
+        - vpcout.vpc.id
+        - pubsub1out.subnet.id
+        - pubsub2out.subnet.id
+        - pubsub3out.subnet.id
+        - pubrtout.route_table.id
+        - igwout.gateway_id
+
+    - set_facts:
+        vpc_id: "{{vpcout.vpc.id}}"
+        pubsub1: "{{pubsub1out.subnet.id}}"
+        pubsub2: "{{pubsub2out.subnet.id}}"
+        pubsub3: "{{pubsub3out.subnet.id}}"
+        gateway_id: "{{igwout.gateway_id}}"
+        pubrtout: "{{pubrtout.route_table.id}}"
+        cacheable: yes
+
+    - name: store all the variable using copy module
+      copy:
+        content: " vpc_id:{{vpcout.vpc.id}}\npubsub1:{{pubsub1out.subnet.id}}\npubsub2:{{pubsub2out.subnet.id}}\npubsub3:{{pubsub3out.subnet.id}}\ngateway_id:{{igwout.gateway_id}}\npubrtout:{{pubrtout.route_table.id}} "
+        dest: vars/output_vars
   
