@@ -121,7 +121,7 @@
         - pubrtout.route_table.id
         - igwout.gateway_id
 
-    - set_facts:
+    - set_fact:
         vpc_id: "{{vpcout.vpc.id}}"
         pubsub1: "{{pubsub1out.subnet.id}}"
         pubsub2: "{{pubsub2out.subnet.id}}"
