@@ -42,6 +42,8 @@
         instance_type: t2.micro
         image: "{{AMI}}"
         region: "{{Region}}"
+        wait: yes
+        wait_timeout: 300
         tags:
           Name: bastion host
           Project: Ansible Project
@@ -51,5 +53,7 @@
           Name: bastion host
           Project: Ansible Project
           Owber: Mayank
-        group_id: "{{BastionSG_out.group_id}}"            
+        group_id: "{{BastionSG_out.group_id}}"  
+        vpc_subnet_id: "{{pubsub1}}"    
+      register: Bastionhost_out      
         
