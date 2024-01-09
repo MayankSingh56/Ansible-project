@@ -138,6 +138,7 @@
           pubsub2: "{{ pubsub2 }}"
           pubsub3: "{{ pubsub3 }}"
           gateway_id: "{{ gateway_id }}"
+          
           pubrtout: "{{ pubrtout }}"
         dest: vars/output_vars
   

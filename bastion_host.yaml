@@ -1,0 +1,26 @@
+- name: setting up a bastion host
+  hosts: localhost
+  gather_facts: false
+  connection: local
+  tasks:
+    - name: getting variable
+      include_vars: vars/output_vars
+
+    - name: getting variable
+      include_vars: vars/bastion_vars
+
+    - name: generating key-pair for bastion-host
+      ec2_key:
+        - name: bastionkey
+          region: "{{Region}}"
+      register: keyout
+
+    - debug:
+        vars: keyout
+
+    - name: saving private key
+      copy:
+        content: "{{keyout.key.private_key}}"
+        dest: ./bastionhost.pem
+      when: keyout.changed
+        
