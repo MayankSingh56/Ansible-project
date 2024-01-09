@@ -11,8 +11,8 @@
 
     - name: generating key-pair for bastion-host
       ec2_key:
-        - name: bastionkey
-          region: "{{Region}}"
+        name: bastionkey
+        region: "{{Region}}"
       register: keyout
 
     - debug:
