@@ -1,0 +1,6 @@
+vpc_id: "vpc-07f71b75cde2bc446"
+pubsub1: "subnet-098d77c277c4ac7d5"
+pubsub2: "subnet-09ee03048cc8e804e"
+pubsub3: "subnet-05cbaf0a404349702"
+gateway_id: "igw-073199321c9f80c38"
+pubrtout: "rtb-003db3e60df6cd2aa"
