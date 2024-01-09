@@ -23,4 +23,33 @@
         content: "{{keyout.key.private_key}}"
         dest: ./bastionhost.pem
       when: keyout.changed
+
+    - name: creating bastion-host security group
+      ec2_group:
+        name: Bastionhost-SG
+        vpc_id: "{{vpc_id}}"
+        region: "{{Region}}"
+        rules:
+          - proto: tcp
+            from_port: 22
+            to_port: 22
+            cidr_ip: "{{MY-IP}}" 
+      register: BastionSG_out
+
+    - name: creating a bastion host
+      ec2:
+        key_name: bastionkey
+        instance_type: t2.micro
+        image: "{{AMI}}"
+        region: "{{Region}}"
+        tags:
+          Name: bastion host
+          Project: Ansible Project
+          Owber: Mayank
+        exact_count: 1
+        count_tag:
+          Name: bastion host
+          Project: Ansible Project
+          Owber: Mayank
+        group_id: "{{BastionSG_out.group_id}}"            
         
