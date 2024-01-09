@@ -40,20 +40,21 @@
       ec2:
         key_name: bastionkey
         instance_type: t2.micro
-        image: "{{AMI}}"
-        region: "{{Region}}"
+        image: "{{ AMI }}"
+        region: "{{ Region }}"
         wait: yes
         wait_timeout: 300
         tags:
           Name: bastion host
           Project: Ansible Project
-          Owber: Mayank
+          Owner: Mayank
         exact_count: 1
         count_tag:
           Name: bastion host
           Project: Ansible Project
-          Owber: Mayank
-        group_id: "{{BastionSG_out.group_id}}"  
-        vpc_subnet_id: "{{pubsub1}}"    
-      register: Bastionhost_out      
+          Owner: Mayank
+        group_id: "{{ BastionSG_out.group_id }}"
+        vpc_subnet_id: "{{ pubsub1 }}"
+      register: Bastionhost_out
+    
         
