@@ -37,11 +37,20 @@
             cidr_ip: "{{MYIP}}" 
       register: BastionSG_out
 
-    - name: creating a bastion host
+    - name: Check if bastion host already exists
+      ec2_instance_info:
+        region: "{{ Region }}"
+        filters:
+          "tag:Name": "bastion host"
+          "tag:Project": "Ansible Project"
+          "tag:Owner": "Mayank"
+      register: existing_instances
+
+    - name: creating a bastion host if it doesn't exist
       ec2_instance:
         key_name: bastionkey
         instance_type: t2.micro
-        image_id: "{{ AMI }}"
+        image_id: "{{ AMI.id }}"
         region: "{{ Region }}"
         wait: yes
         wait_timeout: 300
@@ -49,13 +58,9 @@
           Name: bastion host
           Project: Ansible Project
           Owner: Mayank
-        exact_count: 1
-        count_tag:
-          Name: bastion host
-          Project: Ansible Project
-          Owner: Mayank
-        group_id: "{{ BastionSG_out.group_id }}"
-        vpc_subnet_id: "{{ pubsub1 }}"
+          group_id: "{{ BastionSG_out.group_id }}"
+          vpc_subnet_id: "{{ pubsub1 }}"
+        when: existing_instances.instances | length == 0
       register: Bastionhost_out
     
         
