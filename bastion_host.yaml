@@ -41,7 +41,7 @@
       ec2_instance:
         key_name: bastionkey
         instance_type: t2.micro
-        image: "{{ AMI }}"
+        image_id: "{{ AMI }}"
         region: "{{ Region }}"
         wait: yes
         wait_timeout: 300
