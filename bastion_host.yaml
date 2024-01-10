@@ -26,7 +26,7 @@
 
     - name: creating bastion-host security group
       ec2_group:
-        group_name: Bastionhost-SG
+        name: Bastionhost-SG
         vpc_id: "{{vpc_id}}"
         region: "{{Region}}"
         rules:
