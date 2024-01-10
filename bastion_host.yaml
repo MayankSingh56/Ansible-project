@@ -60,7 +60,7 @@
           Owner: Mayank
           group_id: "{{ BastionSG_out.group_id }}"
           vpc_subnet_id: "{{ pubsub1 }}"
-        when: existing_instances.instances | length == 0
+      when: existing_instances.instances | length == 0
       register: Bastionhost_out
     
         
