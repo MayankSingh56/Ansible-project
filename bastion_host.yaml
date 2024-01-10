@@ -7,7 +7,7 @@
       include_vars: vars/output_vars
 
     - name: getting variable
-      include_vars: vars/bastion_vars
+      include_vars: vars/vpc
 
     - name: generating key-pair for bastion-host
       ec2_key:
