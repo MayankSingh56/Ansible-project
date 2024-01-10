@@ -16,5 +16,5 @@ private_subnet_cidr_block3: 192.20.6.0/24
 
 # bastion host
 
-MYIP: 192.168.1.11/32
+MYIP: 106.202.145.32/32
 AMI: ami-0d3f444bc76de0a79
