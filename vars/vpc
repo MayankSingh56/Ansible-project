@@ -1,0 +1,15 @@
+Region: ap-south-1
+
+vpc_cidr_block: 192.20.0.0/16
+vpc_name: ansible-vpc
+
+Zone1: ap-south-1a
+Zone2: ap-south-1b
+Zone3: ap-south-1c
+
+public_subnet_cidr_block1: 192.20.1.0/24
+public_subnet_cidr_block2: 192.20.2.0/24
+public_subnet_cidr_block3: 192.20.3.0/24
+private_subnet_cidr_block1: 192.20.4.0/24
+private_subnet_cidr_block2: 192.20.5.0/24
+private_subnet_cidr_block3: 192.20.6.0/24
