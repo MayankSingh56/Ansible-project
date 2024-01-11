@@ -1,0 +1,22 @@
+- name: to deploy all the required machine
+  hosts: localhost
+  connection: yes
+  gather_facts: no
+  tasks:
+    - name: Include output variable
+      include_vars: vars/output_vars
+
+    - name: Include output variable
+      include_vars: vars/stack_vars
+
+    - name: creating key-pair for stack 
+      ec2_key:
+        name: vprostackkey
+        region: "{{Region}}"
+      register: stackkey_out
+
+    - name: getting the private key file
+      copy:
+        content: "{{stackkey_out.key.private_key}}"
+        dest: "./stackkey.pem"
+      when: stackkey_out.changed 
